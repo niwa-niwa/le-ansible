@@ -1,6 +1,6 @@
-# Amazon EC2
-FROM centos:8.2.2004
+FROM centos:centos8.2.2004
 
+# 各パッケージを最新にする
 RUN yum -y update && yum clean all
 
 # yumでOpenSSｈサーバをインストールする
