@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  ansible:
+    build: ansible
+    tty: true
+    working_dir: "/var/data"
+    volumes:
+      - type: bind
+        source: "./ansible/data"
+        target: "/var/data"
+
+  target01:
+    container_name: target01
+    build: target
+    tty: true
+
+  target02:
+    container_name: target02
+    build: target
+    tty: true
