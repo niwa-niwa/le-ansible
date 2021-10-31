@@ -48,3 +48,11 @@ services:
       - type: bind
         source: "./shared/ssh"
         target: "/root/.ssh"
+
+  php-ansible:
+    container_name: php-ansible
+    build: app
+    volumes:
+      - type: bind
+        source: "./shared/ssh"
+        target: "/root/.ssh"
