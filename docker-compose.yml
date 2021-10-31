@@ -38,3 +38,13 @@ services:
       - type: bind
         source: "./shared/ssh"
         target: "/root/.ssh"
+
+  nginx-ansible:
+    container_name: nginx-ansible
+    build: web
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: "./shared/ssh"
+        target: "/root/.ssh"
