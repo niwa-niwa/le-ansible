@@ -9,13 +9,24 @@ services:
       - type: bind
         source: "./ansible/data"
         target: "/var/data"
+      - type: bind
+        source: "./shared/ssh"
+        target: "/root/.ssh"
 
   target01:
     container_name: target01
     build: target
     tty: true
+    volumes:
+      - type: bind
+        source: "./shared/ssh"
+        target: "/root/.ssh"
 
   target02:
     container_name: target02
     build: target
     tty: true
+    volumes:
+      - type: bind
+        source: "./shared/ssh"
+        target: "/root/.ssh"

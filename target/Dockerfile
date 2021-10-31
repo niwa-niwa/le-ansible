@@ -10,12 +10,6 @@ RUN yum -y install openssh-server
 RUN ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa
 RUN ssh-keygen -f /etc/ssh/ssh_host_ecdsa_key -N '' -t ecdsa
 
-# rootでログインできるようにする
-RUN sed -ri 's/^#PermitEmptyPasswords no/PermitEmptyPasswords yes/' /etc/ssh/sshd_config
-
-# rootのパスワードを指定
-RUN echo "root:" | chpasswd
-
 EXPOSE 22
 
 # sshdを起動
