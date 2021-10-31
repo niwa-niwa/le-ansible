@@ -30,3 +30,11 @@ services:
       - type: bind
         source: "./shared/ssh"
         target: "/root/.ssh"
+
+  mariadb-ansible:
+    container_name: mariadb-ansible
+    build: db
+    volumes:
+      - type: bind
+        source: "./shared/ssh"
+        target: "/root/.ssh"
