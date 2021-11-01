@@ -10,7 +10,5 @@ RUN yum -y install openssh-server
 RUN ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa
 RUN ssh-keygen -f /etc/ssh/ssh_host_ecdsa_key -N '' -t ecdsa
 
-EXPOSE 22
-
 # sshdを起動
 CMD ["/usr/sbin/sshd", "-D"]

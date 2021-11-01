@@ -20,9 +20,5 @@ RUN ssh-keygen -f /etc/ssh/ssh_host_ecdsa_key -N '' -t ecdsa
 COPY ./startup.sh /startup.sh
 RUN chmod 744 /startup.sh
 
-# 開放ポート SSHとHTTP
-EXPOSE 22
-EXPOSE 80
-
 # startup.shを実行
 ENTRYPOINT  ["/startup.sh"]

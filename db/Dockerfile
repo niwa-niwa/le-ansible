@@ -23,8 +23,4 @@ COPY ./my.cnf /etc/my.cnf.d/
 COPY ./startup.sh /startup.sh
 RUN chmod 744 /startup.sh
 
-# 開放ポート SSHとHTTP
-EXPOSE 22
-EXPOSE 3306
-
 ENTRYPOINT  ["/startup.sh"]
