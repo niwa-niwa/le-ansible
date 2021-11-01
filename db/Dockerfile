@@ -9,6 +9,7 @@ RUN yum -y install openssh-server
 # mariadb-serverインストール
 RUN yum -y install  mariadb-server
 
+# お掃除
 RUN yum clean all
 
 # sshd起動時に公開鍵が必要なため、作成
@@ -22,6 +23,7 @@ COPY ./my.cnf /etc/my.cnf.d/
 COPY ./startup.sh /startup.sh
 RUN chmod 744 /startup.sh
 
+# 開放ポート SSHとHTTP
 EXPOSE 22
 EXPOSE 3306
 

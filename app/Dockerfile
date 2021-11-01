@@ -3,12 +3,13 @@ FROM centos:centos8.2.2004
 # 各パッケージを最新にする
 RUN yum -y update 
 
-
 # yumでOpenSSｈサーバをインストールする
 RUN yum -y install openssh-server
 
+# PHPインストール
 RUN yum -y install php php-fpm
 
+# お掃除
 RUN yum clean all
 
 

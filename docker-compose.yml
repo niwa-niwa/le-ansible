@@ -56,3 +56,5 @@ services:
       - type: bind
         source: "./shared/ssh"
         target: "/root/.ssh"
+    ports:
+      - "8000-10000"
