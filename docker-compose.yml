@@ -2,6 +2,7 @@ version: "3"
 
 services:
   ansible:
+    container_name: main-ansible
     build: ansible
     tty: true
     working_dir: "/var/data"
