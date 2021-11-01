@@ -43,11 +43,20 @@ services:
     container_name: nginx-ansible
     build: web
     ports:
-      - 80:80
+      - "80:80"
+      - "8000:8000"
     volumes:
       - type: bind
         source: "./shared/ssh"
         target: "/root/.ssh"
+      - type: bind
+        source: "./shared/www/"
+        target: "/var/www/"
+      - type: bind
+        source: "./web/conf.d/"
+        target: "/etc/nginx/conf.d/"
+    depends_on:
+      - php-ansible
 
   php-ansible:
     container_name: php-ansible
@@ -56,5 +65,6 @@ services:
       - type: bind
         source: "./shared/ssh"
         target: "/root/.ssh"
-    ports:
-      - "8000-10000"
+      - type: bind
+        source: "./shared/www/"
+        target: "/var/www/"
