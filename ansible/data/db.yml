@@ -1,0 +1,12 @@
+---
+- hosts: db
+  vars:
+    db_user: dev_niwa
+    db_password: dev_niwa
+    db_name: dev_niwa
+  tasks:
+    - name: create a database
+      shell: mysql -u root -e "create database {{db_name}}"
+
+    - name: create a db_user
+      shell: mysql -u root -e 'grant all privileges on {{db_name}}.* to "{{db_user}}"@"%" identified by "{{db_password}}" with grant option'

@@ -11,9 +11,11 @@ chown -R mysql:mysql /var/run/mysql /var/lib/mysql /var/log/mysql
 # MariaDBの初期化
 mysql_install_db --user=mysql
 
-# rootパスワードを求めず起動
-/usr/bin/mysqld_safe --skip-grant-tables
+# MariaDB起動
+/usr/bin/mysqld_safe
+
+# rootのパスワードを設定
+# /usr/bin/mysqladmin -u root password 'password'
 
 # mariadbにリモートアクセスsできるユーザーを作成
-# mysql -u root < grant all privileges on *.* to "root"@"%"
-
+# mysql -u root -e 'grant all privileges on *.* to "root"@"%" identified by "password" with grant option'
