@@ -1,0 +1,18 @@
+---
+- hosts: app
+  vars:
+    ent_id: dev_niwa
+  tasks:
+    # - name: download wordpress
+    #   get_url:
+    #     url: https://ja.wordpress.org/latest-ja.tar.gz
+    #     dest: /var/www/
+
+    - name: unpack wordpress
+      copy:
+        src: /var/www/wordpress
+        dest: /var/www/{{ent_id}}
+        remote_src: yes
+
+    - name: change mode of the dir
+      shell: chown -R nginx:nginx /var/www/{{ent_id}}
