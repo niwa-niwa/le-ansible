@@ -1,7 +1,7 @@
 ---
 - hosts: app
   vars:
-    ent_id: dev_niwa
+    ent_id: dev_niwa3
   tasks:
     # - name: download wordpress
     #   get_url:
@@ -9,10 +9,15 @@
     #     dest: /var/www/
 
     - name: unpack wordpress
-      copy:
-        src: /var/www/wordpress
-        dest: /var/www/{{ent_id}}
+      unarchive:
+        src: /var/www/wordpress-5.8.1-ja.tar.gz
+        dest: /var/www/
+        owner: nginx
+        group: nginx
         remote_src: yes
 
-    - name: change mode of the dir
-      shell: chown -R nginx:nginx /var/www/{{ent_id}}
+    - name: rename the dir
+      shell: mv /var/www/wordpress /var/www/{{ent_id}}
+
+    # - name: change mode of the dir
+    #   shell: chown -R nginx:nginx /var/www/{{ent_id}}
