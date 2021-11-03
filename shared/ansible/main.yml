@@ -1,0 +1,15 @@
+---
+- name: Deploy Database
+  hosts: db
+  roles:
+    - { role: db, tags: db }
+
+- name: Deploy App
+  hosts: app
+  roles:
+    - { role: app, tags: app }
+
+- name: Deploy Web
+  hosts: web
+  roles:
+    - { role: web, tags: web }

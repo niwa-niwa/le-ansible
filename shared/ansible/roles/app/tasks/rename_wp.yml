@@ -1,0 +1,3 @@
+---
+- name: rename the dir
+  shell: mv {{www_root}}/wordpress {{www_root}}/{{ent_id}}

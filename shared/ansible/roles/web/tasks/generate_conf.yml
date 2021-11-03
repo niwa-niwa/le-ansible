@@ -1,0 +1,8 @@
+---
+- name: configure / generate_conf
+  template:
+    src: ./nginx.conf.j2
+    dest: "{{ conf_root }}/{{ ent_id }}.conf"
+    owner: nginx
+    group: nginx
+    mode: 0774

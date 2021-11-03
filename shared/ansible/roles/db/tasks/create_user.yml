@@ -1,0 +1,3 @@
+---
+- name: create a db_user
+  shell: mysql -u root -e 'grant all privileges on {{ent_id}}.* to "{{ent_id}}"@"%" identified by "{{ent_id}}" with grant option'

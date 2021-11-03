@@ -1,0 +1,4 @@
+---
+# - include_tasks: roles/app/tasks/download_wp.yml
+- include_tasks: roles/app/tasks/unpack_wp.yml
+- include_tasks: roles/app/tasks/rename_wp.yml

@@ -1,7 +1,0 @@
-- hosts: target
-  tasks:
-    - name: "テスト"
-      shell: |
-        touch {{name}}
-
-# ansible-playbook playbook.yml -i inventory.ini --extra-vars "name=zzzzz"
