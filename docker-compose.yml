@@ -1,5 +1,8 @@
 version: "3"
 
+volumes:
+  lesson-ansible-db:
+
 services:
   ansible:
     container_name: main-ansible
@@ -14,24 +17,6 @@ services:
         source: "./shared/ssh"
         target: "/root/.ssh"
 
-  target01:
-    container_name: target01
-    build: target
-    tty: true
-    volumes:
-      - type: bind
-        source: "./shared/ssh"
-        target: "/root/.ssh"
-
-  target02:
-    container_name: target02
-    build: target
-    tty: true
-    volumes:
-      - type: bind
-        source: "./shared/ssh"
-        target: "/root/.ssh"
-
   mariadb-ansible:
     container_name: mariadb-ansible
     build: db
@@ -39,13 +24,28 @@ services:
       - type: bind
         source: "./shared/ssh"
         target: "/root/.ssh"
+      - type: volume
+        source: "lesson-ansible-db"
+        target: "/var/lib/mysql"
+
+  php-ansible:
+    container_name: php-ansible
+    build: app
+    volumes:
+      - type: bind
+        source: "./shared/ssh"
+        target: "/root/.ssh"
+      - type: bind
+        source: "./shared/www/"
+        target: "/var/www/"
+    depends_on:
+      - mariadb-ansible
 
   nginx-ansible:
     container_name: nginx-ansible
     build: web
     ports:
       - "80:80"
-      - "8000:8000"
     volumes:
       - type: bind
         source: "./shared/ssh"
@@ -58,14 +58,3 @@ services:
         target: "/etc/nginx/conf.d/"
     depends_on:
       - php-ansible
-
-  php-ansible:
-    container_name: php-ansible
-    build: app
-    volumes:
-      - type: bind
-        source: "./shared/ssh"
-        target: "/root/.ssh"
-      - type: bind
-        source: "./shared/www/"
-        target: "/var/www/"
