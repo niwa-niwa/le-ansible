@@ -7,7 +7,7 @@ RUN yum -y update
 RUN yum -y install openssh-server
 
 # PHPインストール
-RUN yum -y install php php-fpm
+RUN yum -y install php php-xml php-xmlrpc php-fpm php-pecl-apcu php-mbstring php-gd php-json php-pdo php-mysqlnd php-opcache php-pear php-soap php-intl php-pear
 
 # お掃除
 RUN yum clean all
