@@ -14,4 +14,9 @@ RUN /usr/bin/python3 -m pip install ansible==2.9.10
 
 RUN yum clean all
 
-CMD /bin/bash
+# コンテナ実行時に起動させるシェルファイル
+COPY ./startup.sh /startup.sh
+RUN chmod 744 /startup.sh
+
+# startup.shを実行
+ENTRYPOINT  ["/startup.sh"]

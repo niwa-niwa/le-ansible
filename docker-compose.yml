@@ -6,20 +6,20 @@ volumes:
 services:
   ansible:
     container_name: main-ansible
-    build: ansible
+    build: ./containers/ansible
     tty: true
-    working_dir: "/var/data"
+    working_dir: "/var/ansible"
     volumes:
       - type: bind
-        source: "./ansible/data"
-        target: "/var/data"
+        source: "./shared/ansible"
+        target: "/var/ansible"
       - type: bind
         source: "./shared/ssh"
         target: "/root/.ssh"
 
   mariadb-ansible:
     container_name: mariadb-ansible
-    build: db
+    build: ./containers/db
     volumes:
       - type: bind
         source: "./shared/ssh"
@@ -30,7 +30,7 @@ services:
 
   php-ansible:
     container_name: php-ansible
-    build: app
+    build: ./containers/app
     volumes:
       - type: bind
         source: "./shared/ssh"
@@ -43,7 +43,7 @@ services:
 
   nginx-ansible:
     container_name: nginx-ansible
-    build: web
+    build: ./containers/web
     ports:
       - "80:80"
     volumes:
@@ -54,7 +54,7 @@ services:
         source: "./shared/www/"
         target: "/var/www/"
       - type: bind
-        source: "./web/conf.d/"
+        source: "./shared/nginx/conf.d/"
         target: "/etc/nginx/conf.d/"
     depends_on:
       - php-ansible

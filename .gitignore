@@ -1,5 +1,10 @@
 *.todo
-known_hosts
-www/
-web/conf.d/
 *.ignore
+
+shared/ssh/known_hosts
+
+shared/www/*
+shared/nginx/conf.d/*
+
+!shared/nginx/conf.d/index.conf
+!shared/www/index.php
