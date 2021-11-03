@@ -1,0 +1,16 @@
+---
+- hosts: web
+
+  vars:
+    ent_id: dev_niwa
+
+  tasks:
+    - template:
+        src: ./nginx.conf.j2
+        dest: /etc/nginx/conf.d/{{ent_id}}.conf
+        owner: nginx
+        group: nginx
+        mode: 0774
+
+    - name: reload nginx
+      shell: /usr/sbin/nginx -s reload

@@ -1,3 +1,4 @@
 *.todo
 known_hosts
 www/
+web/conf.d/
