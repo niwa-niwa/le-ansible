@@ -1,4 +1,6 @@
 ---
+# it takes a long time to download a file that's why comment out
+# recommend download a file with web browser and then put the file in shared/www
 # - include_tasks: roles/app/tasks/download_wp.yml
 - include_tasks: roles/app/tasks/unpack_wp.yml
 - include_tasks: roles/app/tasks/rename_wp.yml

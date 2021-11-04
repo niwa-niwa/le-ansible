@@ -1,7 +1,7 @@
 ---
 - name: unpack wordpress
   unarchive:
-    src: "{{www_root}}/wordpress-5.8.1-ja.tar.gz"
+    src: "{{www_root}}/{{wp_tgz}}"
     dest: "{{www_root}}/"
     owner: nginx
     group: nginx

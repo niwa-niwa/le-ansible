@@ -1,5 +1,5 @@
 ---
 - name: download wordpress
   get_url:
-    url: "{{wp_url}}"
+    url: "{{wp_url}}/{{wp_tgz}}"
     dest: "{{www_root}}/"

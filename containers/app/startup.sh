@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-# SSH起動
+# start SSH
 /usr/sbin/sshd && tail -f /dev/null &
 
+# start php-fpm
 php-fpm -F

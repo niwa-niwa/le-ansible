@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-# SSH起動
+# start SSH
 /usr/sbin/sshd && tail -f /dev/null &
 
-# Nginx起動
+# start Nginx
 /usr/sbin/nginx -g 'daemon off;' -c /etc/nginx/nginx.conf
-# nginxリロード /usr/sbin/nginx -s reload
-# nginx停止 /usr/sbin/nginx -s stop
+# reload nginx /usr/sbin/nginx -s reload
+# stop nginx /usr/sbin/nginx -s stop
 # https://www.nginx.com/resources/wiki/start/topics/tutorials/commandline/

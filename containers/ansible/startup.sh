@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# SSH起動
+# start ssh
 /usr/sbin/sshd && tail -f /dev/null &
 
-# Bashで起動
+# start Bash
 /bin/bash

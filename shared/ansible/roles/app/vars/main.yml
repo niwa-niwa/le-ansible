@@ -1,3 +1,4 @@
 ---
-wp_url: https://ja.wordpress.org/latest-ja.tar.gz
+wp_tgz: wordpress-5.8.1-ja.tar.gz
+wp_url: https://ja.wordpress.org
 www_root: /var/www
